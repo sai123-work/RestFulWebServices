@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>003 Encryption and Decryption Concepts</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 3, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 1158202, "assessment_type": "multiple-choice", "created": "2017-01-11T03:54:19Z", "prompt": {"feedbacks": ["", "", "", ""], "answers": ["<p>one</p>", "<p>two</p>", "<p>three</p>", "<p>four</p>"], "relatedLectureIds": ["6339764"], "question": "<p>How many types of encryption algorithms are there?</p>"}, "correct_response": ["b"], "updated": "2017-01-11T03:54:19Z", "section": "", "question_plain": "How many types of encryption algorithms are there?", "related_lectures": [{"_class": "lecture", "id": 6339764, "title": "Confidentiality Introduction", "created": "2017-01-09T17:07:30Z", "asset": {"_class": "asset", "id": 7547104, "asset_type": "Video", "title": "Encryption Intro.mp4", "created": "2017-01-09T17:13:49Z"}, "object_index": 30, "url": "/javawebservicespart2/learn/v4/t/lecture/6339764"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 1158204, "assessment_type": "multiple-choice", "created": "2017-01-11T03:55:20Z", "prompt": {"feedbacks": ["", ""], "answers": ["<p>true</p>", "<p>false</p>"], "relatedLectureIds": ["6339764"], "question": "<p>In private key encryption one of the keys is shared across client</p>"}, "correct_response": ["b"], "updated": "2017-01-11T03:55:20Z", "section": "", "question_plain": "In private key encryption one of the keys is shared across client", "related_lectures": [{"_class": "lecture", "id": 6339764, "title": "Confidentiality Introduction", "created": "2017-01-09T17:07:30Z", "asset": {"_class": "asset", "id": 7547104, "asset_type": "Video", "title": "Encryption Intro.mp4", "created": "2017-01-09T17:13:49Z"}, "object_index": 30, "url": "/javawebservicespart2/learn/v4/t/lecture/6339764"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 1158210, "assessment_type": "multiple-choice", "created": "2017-01-11T04:02:37Z", "prompt": {"relatedLectureIds": ["6339764"], "answers": ["<p>true</p>", "<p>false</p>"], "feedbacks": ["", ""], "question": "<p>Public key encryption is more expensive when compared to private key encryption</p>"}, "correct_response": ["b"], "updated": "2017-01-11T04:02:37Z", "section": "", "question_plain": "Public key encryption is more expensive when compared to private key encryption", "related_lectures": [{"_class": "lecture", "id": 6339764, "title": "Confidentiality Introduction", "created": "2017-01-09T17:07:30Z", "asset": {"_class": "asset", "id": 7547104, "asset_type": "Video", "title": "Encryption Intro.mp4", "created": "2017-01-09T17:13:49Z"}, "object_index": 30, "url": "/javawebservicespart2/learn/v4/t/lecture/6339764"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

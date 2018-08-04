@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>005 Timestamp</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 2, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 1158626, "assessment_type": "multiple-choice", "created": "2017-01-11T16:03:22Z", "prompt": {"question": "<p>By default what is the time difference between the creation and expiry datetime in the timestamp?</p>", "relatedLectureIds": ["6332954"], "answers": ["<p>300 seconds</p>", "<p>30 seconds</p>", "<p>100 seconds</p>", "<p>60 seconds</p>"], "feedbacks": ["", "", "", ""]}, "correct_response": ["a"], "updated": "2017-01-11T16:03:22Z", "section": "", "question_plain": "By default what is the time difference between the creation and expiry datetime in the timestamp?", "related_lectures": [{"_class": "lecture", "id": 6332954, "title": "What is a Timestamp?", "created": "2017-01-08T05:49:33Z", "asset": {"_class": "asset", "id": 7539456, "asset_type": "Video", "title": "Timestamp.mp4", "created": "2017-01-08T05:55:40Z"}, "object_index": 56, "url": "/javawebservicespart2/learn/v4/t/lecture/6332954"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 1158634, "assessment_type": "multiple-choice", "created": "2017-01-11T16:07:29Z", "prompt": {"question": "<p>Timestamp prevents what king of attacks?</p>", "relatedLectureIds": ["6332954"], "answers": ["<p>sender</p>", "<p>replay</p>", "<p>integrity</p>", "<p>confidentiality</p>"], "feedbacks": ["", "", "", ""]}, "correct_response": ["b"], "updated": "2017-01-11T16:07:29Z", "section": "", "question_plain": "Timestamp prevents what king of attacks?", "related_lectures": [{"_class": "lecture", "id": 6332954, "title": "What is a Timestamp?", "created": "2017-01-08T05:49:33Z", "asset": {"_class": "asset", "id": 7539456, "asset_type": "Video", "title": "Timestamp.mp4", "created": "2017-01-08T05:55:40Z"}, "object_index": 56, "url": "/javawebservicespart2/learn/v4/t/lecture/6332954"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

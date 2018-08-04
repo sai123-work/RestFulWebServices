@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>004 Integrity</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 2, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 1158620, "assessment_type": "multiple-choice", "created": "2017-01-11T16:01:26Z", "prompt": {"answers": ["<p>true</p>", "<p>false</p>"], "question": "<p>We use Signatures for ensuring Integrity</p>", "relatedLectureIds": ["6332952"], "feedbacks": ["", ""]}, "correct_response": ["a"], "updated": "2017-08-13T23:50:34Z", "section": "", "question_plain": "We use Signatures for ensuring Integrity", "related_lectures": [{"_class": "lecture", "id": 6332952, "title": "What are Signatures?", "created": "2017-01-08T05:48:57Z", "asset": {"_class": "asset", "id": 7539454, "asset_type": "Video", "title": "Signatures.mp4", "created": "2017-01-08T05:55:01Z"}, "object_index": 50, "url": "/javawebservicespart2/learn/v4/t/lecture/6332952"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 1158622, "assessment_type": "multiple-choice", "created": "2017-01-11T16:02:04Z", "prompt": {"question": "<p>A sender signs the message using the receivers public key?</p>", "feedbacks": ["", ""], "relatedLectureIds": ["6272008"], "answers": ["<p>true</p>", "<p>false</p>"]}, "correct_response": ["b"], "updated": "2017-01-11T16:02:04Z", "section": "", "question_plain": "A sender signs the message using the receivers public key?", "related_lectures": [{"_class": "lecture", "id": 6272008, "title": "Configure Signature on the client", "created": "2016-12-28T09:45:55Z", "asset": {"_class": "asset", "id": 7523160, "asset_type": "Video", "title": "Sign the message on the client.mp4", "created": "2017-01-05T14:46:32Z"}, "object_index": 51, "url": "/javawebservicespart2/learn/v4/t/lecture/6272008"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>
