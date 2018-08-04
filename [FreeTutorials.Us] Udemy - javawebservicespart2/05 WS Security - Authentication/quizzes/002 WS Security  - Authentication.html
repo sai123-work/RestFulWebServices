@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>002 WS Security  - Authentication</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 2, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 1158148, "assessment_type": "multiple-choice", "created": "2017-01-11T02:31:54Z", "prompt": {"relatedLectureIds": ["6332950"], "question": "<p>What is the root element that wraps all WS Security elements in the Soap Header</p>", "feedbacks": ["", "", "", ""], "answers": ["<p>wssecurity</p>", "<p>usernametoken</p>", "<p>security</p>", "<p>soapsecurity</p>"]}, "correct_response": ["c"], "updated": "2017-01-11T02:31:54Z", "section": "", "question_plain": "What is the root element that wraps all WS Security elements in the Soap Header", "related_lectures": [{"_class": "lecture", "id": 6332950, "title": "What is Username Token Profile?", "created": "2017-01-08T05:48:52Z", "asset": {"_class": "asset", "id": 7539450, "asset_type": "Video", "title": "Username Token Profile.mp4", "created": "2017-01-08T05:51:18Z"}, "object_index": 19, "url": "/javawebservicespart2/learn/v4/t/lecture/6332950"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 1158152, "assessment_type": "multiple-choice", "created": "2017-01-11T02:39:12Z", "prompt": {"relatedLectureIds": ["6333372"], "question": "<p>Which security concern does Username Token Profile address</p>", "feedbacks": ["", "", "", ""], "answers": ["<p>Confidentiality</p>", "<p>Integrity</p>", "<p>Non Repudiation</p>", "<p>Authentication</p>"]}, "correct_response": ["d"], "updated": "2017-01-11T02:39:12Z", "section": "", "question_plain": "Which security concern does Username Token Profile address", "related_lectures": [{"_class": "lecture", "id": 6333372, "title": "WS Security and Apache CXF", "created": "2017-01-08T10:12:29Z", "asset": {"_class": "asset", "id": 7540034, "asset_type": "Video", "title": "CXF And Security.mp4", "created": "2017-01-08T10:44:00Z"}, "object_index": 18, "url": "/javawebservicespart2/learn/v4/t/lecture/6333372"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>

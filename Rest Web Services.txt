@@ -1,0 +1,149 @@
+Rest Web Services
+-----------------
+
+1) To create your own status message
+ResponseEntity.created(location).build.........
+
+Need: Suppose if you want to retrieve the the resource which is not created then default message will be appeared that is Internal server error actually that is not server error.
+----      
+	  Inorder to modify the status we use ResponseEntity.
+	  
+2)After craeting the resource client doesn't know which id has been associated for that resource and URI to retrieve that resource alone Immideatly so for that purspose we use below one
+     ServletURIComponentBuilder.fromCurrentRequest().path("/{}).buildAndExpand(URI Vriables);
+	 
+3)To raise the exception
+ trow new ExceptionName(Parameters);
+ 
+ Ex: throw new ExceptionNotFound("id" + id);
+ For this you need to create a calss with the exception name which you have given above and it should be extended with RuntimeException. Need to give the @ResponseStatus annotation for 
+ the class. This results in change of staus message.
+ Ex: @ResponseStatus(HTTPsatus.NOT_FOUND)
+ 
+ 4) If any Exception Raised  we will receive default response structure as below
+ {Something: Something
+ Something: Something
+ Something: Something
+ Something: Something
+ }
+ instead of this if you want to create your own response structure by extending ResponseEntityExceptionHnadler class.
+ 
+ 5)Internalization:
+ ------------------
+ 
+ Internalization means different country people requests particular thing for example Good Morning to give the response in their own language we make use this concept.
+  To acheive Internalization must follow below steps
+  1) Configuration:
+  -----------------
+  ->Locale Resolver
+     - Default Locale - locale.use
+  -> ResourceBundleMessageSource
+  
+  2) How to Use:
+  --------------
+  -> Autowire MessageSource
+  -> RequestHandler(value="Accept Language" , required = false) Locale locale
+  ->messageSource.getMessage("hello world message", null, locale)
+  
+  6) Content Negotiation:
+  -----------------------
+  -> This concept helps us to which format has to be send as input and get as response.
+  -> For this you need to add jar file in pom.xml which is jackson-dataformat-xml.
+  ->After this you will able to get the xml form of data when you put the application/xml in postman header.
+  
+  7) Swagger:
+  ----------
+  ->Swagger is Documentation format for Restful web services.
+  -> To consume created restful webservices we provide swagger documentation to the consumer to let them know our contract.
+  Configuration of swagger:
+  -------------------------
+  -> Add the springfox-swagger2  dependency in pom.xml
+  -> Add the springfox-swagger-ui  dependency in pom.xml
+  -> Create the class with the annoattions @Configuration and @EnableSwagger2
+                                                                            |
+																			V 
+																			here 2 is version
+																			
+  -> Create a bean Docket.
+ -> Now type in localhost//8080/swager-ui.html then you will see the ui of swagger with all the services you have written.  
+ ->you can see the documentation by using the url localhost//8080/v2/api-docs
+ 
+ 
+ 8) Spring Boot Actuator:
+ -----------------------
+ -> If any particular service is failed and application is down to monitor the application very quickly we use springboot actuator.
+ ->For this you need to add the dependency springboot-starter-actuator in pom.xml
+ ->To look what the services springboot actuator is providing we use hal browser.
+ -> Add the spring-data-rest-hal-browser dependency in pom.xml to use hal browser.
+
+9)Filtering:
+------------
+-> If we don't want to send some bean elements in the response we make use of filtering concept.
+
+Need: In your response there is a password element so we need to filter it out.
+-> Write the @JsonIgnore on the field which you don't want to send in the response then automatically it will be filtered out.
+->@JsonIgnoreProperties(value={"",""}) will fiter out. this is the other way of filtering.
+->In above case we are hard coding fields which ever we don't want to send in the respnse.
+-> The above two cases are static filtering.
+->For example if I don't want to send field1 some times and for some times field2 depending on request then I can't use annotation on both of them.
+-> Then we use dynamic filtering by using MappingJacksonValue class.
+->We need to configure the filters. 
+-> FilterProvider filter = new SimpleFilterProvider().addFilter("propertiesconsistedobjectname", "filter");
+   MappingJacksonValue mapping = new MappingJacksonValue(propertiesconsistedobjectname);
+   mapping.setFilters(filter);
+
+10) Versioning:
+---------------
+-> Over a period things may change so some of the fields we need to make a change for example name of a person.
+-> In the version 1 perosn  whole name has given in one variable.
+->After some time you split the name as first name and last name.
+->But some consumers expect old version and some expect new version.
+-> For this we need to craete different methods and URI's to get particular version.
+-> There are so many types of versioning
+    
+                 1) URI versioning
+                 2) Media Type versiioning
+                 3) Request parameter Versioning
+                 4) API versioning
+
+11)Authentication of Restful Webservices:
+-----------------------------------------
+-> If end client wants to access your  you need to provide authentication.
+-> Basic Authentication: which provides the user name and password to access resource.
+-> Digest Authentication: password digets is created and will send across but actual password will not send to the server.
+-> Other option is Oauth authentication.
+
+Basic Authentication: Add the Springboot-starter-security dependency in pom.xml.
+->When yu start the server then in the logs you can see the password. copy it and paste in postman.
+->In postman you need to mention Authorisatiion type as Basic then it will ask for the username & password.
+->Default user name is user and password is what ever you copied from the logs.
+-> Every time the password changes as you restart the server so to avoid this mention username and password in application.properties.
+->In application. properties mention like below:
+    security.user.name = username(what ever the name you wish)
+    security.user.password = password(what ever the password you wish)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 

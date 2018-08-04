@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <meta charset="UTF-8">
+        <title>001 SOAP WS - Standard Concepts</title>
+    </head>
+    <body>
+
+        <div style="background-color:#ffffaa" align = "center">
+            <script>
+                var c = '';
+                var opt = '';
+                var n = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j']
+
+                var quiz = {"count": 3, "next": null, "previous": null, "results": [{"_class": "assessment", "id": 1158162, "assessment_type": "multiple-choice", "created": "2017-01-11T02:46:49Z", "prompt": {"question": "<p>What does Apache CXF use for integration with WSS4J and Security?</p>", "feedbacks": ["", "", "", ""], "answers": ["<p>Filters</p>", "<p>WSS4JFilters</p>", "<p>Interceptors</p>", "<p>Servlets</p>"], "relatedLectureIds": ["6333372"]}, "correct_response": ["c"], "updated": "2017-01-11T02:46:49Z", "section": "", "question_plain": "What does Apache CXF use for integration with WSS4J and Security?", "related_lectures": [{"_class": "lecture", "id": 6333372, "title": "WS Security and Apache CXF", "created": "2017-01-08T10:12:29Z", "asset": {"_class": "asset", "id": 7540034, "asset_type": "Video", "title": "CXF And Security.mp4", "created": "2017-01-08T10:44:00Z"}, "object_index": 18, "url": "/javawebservicespart2/learn/v4/t/lecture/6333372"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 1158184, "assessment_type": "multiple-choice", "created": "2017-01-11T03:12:33Z", "prompt": {"question": "<p>One big advantage of SOAP over REST is existence of WS Standards</p>", "answers": ["<p>true</p>", "<p>false</p>"], "feedbacks": ["", ""], "relatedLectureIds": ["6328622"]}, "correct_response": ["a"], "updated": "2017-01-11T03:12:33Z", "section": "", "question_plain": "One big advantage of SOAP over REST is existence of WS Standards", "related_lectures": [{"_class": "lecture", "id": 6328622, "title": "Why WS Standards", "created": "2017-01-07T11:11:37Z", "asset": {"_class": "asset", "id": 7535264, "asset_type": "Video", "title": "Why WS Standards.mp4", "created": "2017-01-07T11:17:23Z"}, "object_index": 16, "url": "/javawebservicespart2/learn/v4/t/lecture/6328622"}], "original_assessment_id": 0}, {"_class": "assessment", "id": 1158188, "assessment_type": "multiple-choice", "created": "2017-01-11T03:17:29Z", "prompt": {"question": "<p>CXF has its own implementation of ws security standard and does not use any other apache project</p>", "answers": ["<p>true</p>", "<p>false</p>"], "feedbacks": ["", ""], "relatedLectureIds": ["6333372"]}, "correct_response": ["b"], "updated": "2017-01-11T03:17:29Z", "section": "", "question_plain": "CXF has its own implementation of ws security standard and does not use any other apache project", "related_lectures": [{"_class": "lecture", "id": 6333372, "title": "WS Security and Apache CXF", "created": "2017-01-08T10:12:29Z", "asset": {"_class": "asset", "id": 7540034, "asset_type": "Video", "title": "CXF And Security.mp4", "created": "2017-01-08T10:44:00Z"}, "object_index": 18, "url": "/javawebservicespart2/learn/v4/t/lecture/6333372"}], "original_assessment_id": 0}]};
+
+                for (var i = 0; i < quiz.results.length; i++) {
+
+                    var question = '<font color="ff0000"><br><h3>Question-' + i + ': </h3> <b>' + quiz.results[i].prompt.question + '</b> <br>';
+
+                    for (var j = 0; j < quiz.results[i].prompt.answers.length; j++) {
+
+                        opt = opt.concat(quiz.results[i].prompt.answers[j] ? '<p style="cursor: pointer" onclick="this.style=\'font-weight: bold; color: #CE534D\'">' + n[j] + ': ' + quiz.results[i].prompt.answers[j].toString().replace(/,/g, '<br>') + '</p>' : '<br>');
+                    }
+                    var ans = quiz.results[i].correct_response ? '<p> <br> <input style="cursor: pointer" type="button" onclick="this.value=\'Answer is: ' + quiz.results[i].correct_response.toString() + '\'" value="Show Answer"></input> </p>' : '<br>';
+                    c = c.concat(question, opt, ans);
+                    opt = ''
+                    }
+                document.write(c);
+            </script>
+        </div>
+    </body>
+    </html>
